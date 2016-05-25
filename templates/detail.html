@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student: {{ name }}</title>
+</head>
+<body>
+    Name: <em>{{ name }}</em><br/>
+    Id: <em>{{ id }}</em><br/>
+    GPA: <em>{{ gpa }}</em><br/>
+    Major: <em>{{ major_name }}</em><br/>
+    <br/>
+    <table>
+    {% for quarter, quarter_marks in grades.items() %}
+        <tr><td colspan="2"><u>{{quarter}}</u></tr>
+        {% for row in grades[quarter] %}
+        <tr>
+            <td style="padding-left: 2em;">{{ row.name }}</td>
+            <td>{{ row.mark }}</td>
+        </tr>
+        {% endfor %}
+        <tr><td colspan="2">&nbsp;</tr>
+    {% endfor %}
+    </table>
+</body>
+</html>
