@@ -35,6 +35,15 @@ def connect_db():
 
 
 def init_db():
+    """
+        Create schema and initial data.
+
+        We'll make courses a separate object because each iteration of the course
+        can have different attributes, for example, different professor depending
+        on the year, total hours, etc. (at least in theory)
+
+        Quarter is stored directly as 1..4 and decoded in the app code.
+    """
     with closing(connect_db()) as db:
         with app.open_resource('schema.sql', mode='r') as f:
             db.cursor().executescript(f.read())
@@ -107,6 +116,10 @@ def detail(student_id):
 
 
 def load_random_data():
+    """
+        Load more fake data.
+        Not finished.
+    """
     import random
     male_names = ['John', 'Bill', 'Tom', 'Edward', 'Frank']
     female_names = ['Tina', 'Melinda', 'Amanda', 'Victoria', 'Olivia']
@@ -122,13 +135,10 @@ def load_random_data():
                          (k+2, random.choice(range(1, 5)), v[0], v[1]))
         db.commit()
 
+    # TODO: generate fake scores
+
     print(random_names)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
 
-# Will make courses a separate object because each iteration of the course
-# can have different attributes, for example, different proffessor depending
-# on the year, total hours, etc. (at least in theory)
-#
-# Quarter is stored directly as 1..4 and decoded in the app code.
