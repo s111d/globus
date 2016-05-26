@@ -1,3 +1,4 @@
+Test tasks: https://docs.google.com/document/d/1g21iOerEXatdjdLZt8USag_1O6gSZcabjbv66rOCaLg/edit
 *Both tasks are implemented in Python 3.*
 
 #### Task 1
